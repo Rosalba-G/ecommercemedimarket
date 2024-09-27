@@ -1,29 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
+import Encabezado from './Encabezado';
+import Carrito from './componentes/carrito/Carrito';
+import { useState } from 'react';
+import PieDePagina from './componentes/pie-de-pagina/PieDePagina';
 
 function App() {
+  const [carritoVisible, setCarritoVisible] = useState(false);
+
+  const mostrarCarrito = () => {setCarritoVisible(true)};
+  const cerrarCarrito = () => {setCarritoVisible(false)};
   return (<>
-  <header>
-    <h1>Bienvenido a Medimarket</h1>
-    <p>Tu farmacia en línea de confianza</p>
-    <br/>
-    <nav>
-      <ul>
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#productos">Productos</a></li>
-        <li><a href="#contacto">Contactanos</a></li>
-        <li><a href="#carrito">Carrito</a></li>
-      </ul>
-      <div class="btn-container">
-        <button id="btn-abrir-login" class="btn-registro">Iniciar sesión</button>
-        <button id="btn-abrir-registro" class="btn-registro">Registrarse</button>
-        <button id="btn-abrir-carrito" class="btn-carrito"><img src="img/carrito-de-compras.png" alt="logo"/></button>
-        <button id="btn-abrir-gestion-datos" class="btn-gestion-datos">
-          <img src="img/person-circle.svg" alt="Icono de cuenta" class="icono-cuenta"/>
-        </button>
-      </div>
-    </nav>
-  </header>
+  <Encabezado mostrarCarrito={mostrarCarrito}></Encabezado>
 
   <main>
     <section id="inicio">
@@ -142,16 +129,9 @@ function App() {
       </div>
     </section>
 
-    <footer>
-      <p>Medimarket &copy; 2024 - Todos los derechos reservados</p>
-    </footer>
-    <div id="modal-carrito-de-compras" class="modal modal-grande">
-      <div class="modal-contenido">
-        <span id="cerrar-carrito" class="cerrar">&times;</span>
-        <h2>Carrito de compras</h2>
-        <div id="contenido-carrito-de-compras"></div>
-      </div>
-    </div>
+    <PieDePagina></PieDePagina>
+
+    <Carrito visible={carritoVisible} cerrarCarrito={cerrarCarrito}></Carrito>
 
     <div id="modal-registro" class="modal">
       <div class="modal-contenido">
