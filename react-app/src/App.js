@@ -1,7 +1,6 @@
 import './App.css';
 import Encabezado from './componentes/encabezado/Encabezado';
 import Carrito from './componentes/carrito/Carrito';
-import { useState } from 'react';
 import PieDePagina from './componentes/pie-de-pagina/PieDePagina';
 import ModalLogin from './componentes/modal-login/ModalLogin';
 import ModalRegistro from './componentes/modal-registro/ModalRegistro';
@@ -9,12 +8,42 @@ import ModalGestionDatos from './modal-gestion-datos/ModalGestionDatos';
 import Inicio from './inicio/Inicio';
 import Contacto from './componentes/contacto/Contacto';
 import ListaDeProductos from './componentes/lista_de_productos/ListaDeProductos';
+import CovidData from './componentes/covid/COVID';
+
+import {useState, useEffect} from 'react';
 
 function App() {
   const [carritoVisible, setCarritoVisible] = useState(false);
 
   const mostrarCarrito = () => {setCarritoVisible(true)};
   const cerrarCarrito = () => {setCarritoVisible(false)};
+  
+  const agregarProducto = (nombre, precio, etiquetaPrecio, imagen) => {
+    const productos = JSON.parse(sessionStorage.getItem('productos-carrito')) || [];
+    const productoAgregado = productos.find(x => x.nombre == nombre);
+    if (productoAgregado){
+        productoAgregado.cantidad++;
+    } else {
+        productos.push({
+            nombre,
+            precio,
+            etiquetaPrecio,
+            cantidad: 1,
+            imagen
+        });
+    }
+    setProductos(productos.map(x=>x));
+}
+
+const [productos, setProductos] = useState(() => {
+  const productosGuardados = sessionStorage.getItem('productos-carrito');
+  return productosGuardados ? JSON.parse(productosGuardados) : [];
+});
+
+useEffect(() => {
+  sessionStorage.setItem('productos-carrito', JSON.stringify(productos));
+}, [productos]);
+
   return (<>
   <Encabezado mostrarCarrito={mostrarCarrito}></Encabezado>
 
@@ -36,19 +65,21 @@ function App() {
       </select>
     </section>
 
-    <ListaDeProductos></ListaDeProductos> 
+    <ListaDeProductos agregarProducto={agregarProducto}></ListaDeProductos> 
   
     <Contacto></Contacto> 
 
     <PieDePagina></PieDePagina>
 
-    <Carrito visible={carritoVisible} cerrarCarrito={cerrarCarrito}></Carrito>
+    <Carrito visible={carritoVisible} cerrarCarrito={cerrarCarrito} productos={productos} setProductos={setProductos}></Carrito>
 
     <ModalRegistro></ModalRegistro>
 
     <ModalLogin></ModalLogin>
 
     <ModalGestionDatos></ModalGestionDatos> 
+
+    <CovidData />
 
     <script src="js/index.js"></script>
     </main>

@@ -1,3 +1,5 @@
+import './Encabezado.css';
+
 function Encabezado(props) {
     return (
         <header>
