@@ -348,14 +348,3 @@ section img {
     margin-bottom: 20px;
     text-align: center;
 }
-
-/* Estilos para el footer */
-footer {
-    background-color: #00acc1;
-    color: #ffffff;
-    text-align: center;
-    padding: 10px;
-    position: sticky;
-    bottom: 0;
-    width: 100%;
-}

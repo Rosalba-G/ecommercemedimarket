@@ -1,8 +1,14 @@
 import './App.css';
-import Encabezado from './Encabezado';
+import Encabezado from './componentes/encabezado/Encabezado';
 import Carrito from './componentes/carrito/Carrito';
 import { useState } from 'react';
 import PieDePagina from './componentes/pie-de-pagina/PieDePagina';
+import ModalLogin from './componentes/modal-login/ModalLogin';
+import ModalRegistro from './componentes/modal-registro/ModalRegistro';
+import ModalGestionDatos from './modal-gestion-datos/ModalGestionDatos';
+import Inicio from './inicio/Inicio';
+import Contacto from './componentes/contacto/Contacto';
+import ListaDeProductos from './componentes/lista_de_productos/ListaDeProductos';
 
 function App() {
   const [carritoVisible, setCarritoVisible] = useState(false);
@@ -13,15 +19,13 @@ function App() {
   <Encabezado mostrarCarrito={mostrarCarrito}></Encabezado>
 
   <main>
-    <section id="inicio">
-      <h2>Nuestros productos</h2>
-      <p>Descubre una amplia variedad de medicamentos, vitaminas y productos de salud.</p>
-      <img src="img/StockCake-Pharmacy Shelf Restocking_1726026978.jpg" alt="Productos de farmacia" />
-    </section>
 
-    <section id="productos">
+    
+  <Inicio></Inicio>
+
+  <section id="productos">
       <h2>Catálogo de productos</h2>
-      <input type="text" id="buscador" placeholder="Buscar producto..." onkeyup="buscarProducto()" />
+      <input type="text" id="buscador" placeholder="Buscar producto..." onkeyup="buscarProducto()"/>
       <br/>
       <select id="categoria" onchange="filtrarPorCategoria()">
         <option value="">Todas las categorías</option>
@@ -32,156 +36,19 @@ function App() {
       </select>
     </section>
 
-    <section id="carrusel-productos">
-      <h2>Resultados de productos</h2>
-      <div class="carrusel">
-        <div id="lista-productos" class="productos-carrusel">
-          <div class="producto" data-categoria="Medicamentos">
-            <img src="img/Paracetamol.jpg" alt="Paracetamol"/>
-            <h3>Paracetamol</h3>
-            <p><strong>Precio:</strong>$10,000</p>
-            <p>Disponible</p>
-            <button class="btn-agregar-carrito" onclick="carrito.agregar('Paracetamol', 10000, 'img/Paracetamol.jpg')">Añadir al carrito</button>
-          </div>
-          <div class="producto" data-categoria="Medicamentos">
-            <img src="img/Acetaminofen.jpg" alt="Acetaminofen"/>
-            <h3>Acetaminofen</h3>
-            <p><strong>Precio:</strong>$2,500</p>
-            <p>Disponible</p>
-            <button class="btn-agregar-carrito" onclick="carrito.agregar('Acetaminofen', 2500, 'img/Acetaminofen.jpg')">Añadir al carrito</button>
-          </div>
-          <div class="producto" data-categoria="Vitaminas y suplementos">
-            <img src="img/vitaminaC.jpg" alt="Vitamina C"/>
-            <h3>Vitamina C</h3>
-            <p><strong>Precio:</strong>$20,000</p>
-            <p>Disponible</p>
-            <button class="btn-agregar-carrito" onclick="carrito.agregar('Vitamina C', 20000, 'img/vitaminaC.jpg')">Añadir al carrito</button>
-          </div>
-          <div class="producto" data-categoria="Medicamentos">
-            <img src="img/Mylanta.jpg" alt="Mylanta"/>
-            <h3>Mylanta-Antiacido</h3>
-            <p><strong>Precio:</strong>$1,900</p>
-            <p>Disponible</p>
-            <button class="btn-agregar-carrito" onclick="carrito.agregar('Mylanta', 1900, 'img/Mylanta.jpg')">Añadir al carrito</button>
-          </div>
-          <div class="producto" data-categoria="Cuidado personal">
-            <img src="img/balsamo-labial.jpg" alt="Bálsamo labial"/>
-            <h3>Bálsamo labial</h3>
-            <p><strong>Precio:</strong>$5,000</p>
-            <p>No disponible</p>
-            <button class="btn-agregar-carrito" onclick="carrito.agregar('Bálsamo labial', 5000, 'img/balsamo-labial.jpg')">Añadir al carrito</button>
-          </div>
-          <div class="producto" data-categoria="Vitaminas y suplementos">
-            <img src="img/Ensure.jpg" alt="Ensure"/>
-            <h3>Ensure</h3>
-            <p><strong>Precio:</strong>$99,200</p>
-            <p>Disponible</p>
-            <button class="btn-agregar-carrito" onclick="carrito.agregar('Ensure', 99200, 'img/Ensure.jpg')">Añadir al carrito</button>
-          </div>
-          <div class="producto" data-categoria="Equipo médico">
-            <img src="img/termometro.jpg" alt="Termómetro"/>
-            <h3>Termómetro</h3>
-            <p><strong>Precio:</strong>$15,000</p>
-            <p>Disponible</p>
-            <button class="btn-agregar-carrito" onclick="carrito.agregar('Termómetro', 15000, 'img/termometro.jpg')">Añadir al carrito</button>
-          </div>
-          <div class="producto" data-categoria="Medicamentos">
-            <img src="img/Azitromicina-MK-suspension-200mg-x15ml.jpg" alt="Azitromicina"/>
-            <h3>Azitromicina 500mg</h3>
-            <p><strong>Precio:</strong>$1,900</p>
-            <p>Disponible</p>
-            <button class="btn-agregar-carrito" onclick="carrito.agregar('Azitromicina', 1900, 'img/Azitromicina-MK-suspension-200mg-x15ml.jpg')">Añadir al carrito</button>
-          </div>
-          <div class="producto" data-categoria="Cuidado personal">
-            <img src="img/Cepillo oral B.jpg" alt="Cepillo dental"/>
-            <h3>Cepillo dental</h3>
-            <p><strong>Precio:</strong>$5,000</p>
-            <p>No disponible</p>
-            <button class="btn-agregar-carrito" onclick="carrito.agregar('Cepillo dental', 5000, 'img/Cepillo oral B.jpg')">Añadir al carrito</button>
-          </div>
-          <div class="producto" data-categoria="Equipo médico">
-            <img src="img/tensiometro_digital.jpg" alt="tensiometro digital"/>
-            <h3>Tensiometro digital</h3>
-            <p><strong>Precio:</strong>$40,700</p>
-            <p>Disponible</p>
-            <button class="btn-agregar-carrito" onclick="carrito.agregar('tensiometro digital', 40700, 'img/tensiometro_digital.jpg')">Añadir al carrito</button>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="contacto">
-      <div class="contacto">
-        <h2>Formulario de contacto</h2>
-        <p>Escríbenos y en breve nos pondremos en contacto contigo</p>
-        <form id="form-contacto" class="form" aling="center">
-          <label for="nombre">Nombre:</label>
-          <input type="text" id="nombre" required/><br/>
-          <label for="email">Email:</label>
-          <input type="email" id="email" required/><br/>
-          <label for="telefono">Teléfono:</label>
-          <input type="text" id="telefono" required/><br/>
-          <label for="asunto">Asunto:</label>
-          <input type="text" id="asunto" required/><br/>
-          <label for="mensaje">Mensaje:</label>
-          <input type="text" id="mensaje" required/>
-          <button type="submit">Enviar</button>
-        </form>
-      </div>
-    </section>
+    <ListaDeProductos></ListaDeProductos> 
+  
+    <Contacto></Contacto> 
 
     <PieDePagina></PieDePagina>
 
     <Carrito visible={carritoVisible} cerrarCarrito={cerrarCarrito}></Carrito>
 
-    <div id="modal-registro" class="modal">
-      <div class="modal-contenido">
-        <span class="cerrar">&times;</span>
-        <h2>Registro de cuentas</h2>
-        <form id="form-registro">
-          <label for="nombre">Nombre:</label>
-          <input type="text" id="nombre" required/><br/>
-          <label for="direccion">Dirección:</label>
-          <input type="text" id="direccion" required/><br/>
-          <label for="telefono">Teléfono:</label>
-          <input type="text" id="telefono" required/><br/>
-          <label for="email">Email:</label>
-          <input type="email" id="email" required/><br/>
-          <label for="password">Contraseña:</label>
-          <input type="password" id="password" required/><br/>
-          <button type="submit">Registrar</button>
-        </form>
-      </div>
-    </div>
+    <ModalRegistro></ModalRegistro>
 
-    <div id="modal-login" class="modal">
-      <div class="modal-contenido">
-        <span class="cerrar">&times;</span>
-        <h2>Iniciar sesión</h2>
-        <form id="form-login">
-          <label for="email-login">Email:</label>
-          <input type="email" id="email-login" required/><br/>
-          <label for="password-login">Contraseña:</label>
-          <input type="password" id="password-login" required/><br/>
-          <button type="submit">Iniciar sesión</button>
-        </form>
-      </div>
-    </div>
+    <ModalLogin></ModalLogin>
 
-    <div id="modal-gestion-datos" class="modal">
-      <div class="modal-contenido">
-        <span class="cerrar">&times;</span>
-        <h2>Gestión de datos personales</h2>
-        <form id="form-gestion-datos" onsubmit="actualizarDatosPersonales(event)">
-          <label for="nombre-gestion">Nombre:</label>
-          <input type="text" id="nombre-gestion" required/><br/>
-          <label for="direccion-gestion">Dirección de envío:</label>
-          <input type="text" id="direccion-gestion" required/><br/>
-          <label for="telefono-gestion">Teléfono:</label>
-          <input type="text" id="telefono-gestion" required/><br/>
-          <button type="submit">Guardar cambios</button>
-        </form>
-      </div>
-    </div>
+    <ModalGestionDatos></ModalGestionDatos> 
 
     <script src="js/index.js"></script>
     </main>
