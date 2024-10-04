@@ -1,6 +1,6 @@
 function ProductoDetalle(props) {
 return (      
-      <div className="producto" data-categoria = "Medicamentos">
+      <div alt="producto-detalle" className="producto" data-categoria = "Medicamentos">
             <img src = {props.imagen} alt = {props.nombre}/>
             <h3>{props.nombre}</h3>
             <p> <strong>Precio: </strong> {props.etiquetaPrecio} </p>

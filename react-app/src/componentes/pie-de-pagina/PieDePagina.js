@@ -1,6 +1,6 @@
 import './PieDePagina.css';
 
-function PieDePagina(props) {
+function PieDePagina() {
     return (      
     <footer>
         <p>Medimarket &copy; 2024 - Todos los derechos reservados</p>
