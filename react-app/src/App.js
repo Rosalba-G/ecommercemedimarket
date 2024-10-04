@@ -5,10 +5,9 @@ import PieDePagina from './componentes/pie-de-pagina/PieDePagina';
 import ModalLogin from './componentes/modal-login/ModalLogin';
 import ModalRegistro from './componentes/modal-registro/ModalRegistro';
 import ModalGestionDatos from './modal-gestion-datos/ModalGestionDatos';
-import Inicio from './inicio/Inicio';
+import Inicio from './componentes/inicio/Inicio';
 import Contacto from './componentes/contacto/Contacto';
 import ListaDeProductos from './componentes/lista_de_productos/ListaDeProductos';
-import CovidData from './componentes/covid/COVID';
 
 import {useState, useEffect} from 'react';
 
@@ -79,12 +78,11 @@ useEffect(() => {
 
     <ModalGestionDatos></ModalGestionDatos> 
 
-    <CovidData />
-
     <script src="js/index.js"></script>
     </main>
     </>
   );
 }
+
 
 export default App;

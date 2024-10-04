@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+import './CovidData.css';
+
+
 const CovidData = () => {
   const [data, setData] = useState(null);
 
@@ -14,14 +17,14 @@ const CovidData = () => {
       });
   }, []);
 
-  if (!data) return <div>Loading...</div>;
+  if (!data) return <div className='loading'>Loading...</div>;
 
   return (
-    <div>
-      <h1>COVID-19 Global Data</h1>
-      <p>Cases: {data.cases}</p>
-      <p>Deaths: {data.deaths}</p>
-      <p>Recovered: {data.recovered}</p>
+    <div className='covid-container'>
+      <h1 className='covid-title'>COVID-19 Global Data</h1>
+      <p className='covid-stats'>Cases: {data.cases} </p>
+      <p className='covid-stats'>Deaths: {data.deaths}</p>
+      <p className='covid stats'>Recovered: {data.recovered}</p>
     </div>
   );
 };

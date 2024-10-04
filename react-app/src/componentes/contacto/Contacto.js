@@ -1,4 +1,4 @@
-function Contacto(props) {
+function Contacto() {
     return (
         <section id="contacto">
       <div class="contacto">

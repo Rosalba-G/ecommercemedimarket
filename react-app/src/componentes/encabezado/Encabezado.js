@@ -1,3 +1,4 @@
+import CovidData from '../covid/CovidData';
 import './Encabezado.css';
 
 function Encabezado(props) {
@@ -7,6 +8,8 @@ function Encabezado(props) {
         <p>Tu farmacia en línea de confianza</p>
         <br/>
         <nav>
+        
+        <CovidData></CovidData>
           <ul>
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#productos">Productos</a></li>

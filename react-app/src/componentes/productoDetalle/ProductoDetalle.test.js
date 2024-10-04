@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import ProductoDetalle from './ProductoDetalle';
 
-describe('ProductoDetalle', () => {
+describe('Producto detalle', () => {
   const props = {
     imagen: 'assets/img/Paracetamol.jpg',
     nombre: 'Paracetamol',

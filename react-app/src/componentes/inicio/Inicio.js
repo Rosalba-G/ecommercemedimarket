@@ -1,4 +1,4 @@
-function Inicio(props) {
+function Inicio() {
     return (
 <section id="inicio">
       <h2>Nuestros productos</h2>
