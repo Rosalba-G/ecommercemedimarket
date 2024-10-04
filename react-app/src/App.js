@@ -1,3 +1,5 @@
+//Jorge Luis Zea
+//Rosalba Giraldo
 import './App.css';
 import Encabezado from './componentes/encabezado/Encabezado';
 import Carrito from './componentes/carrito/Carrito';
