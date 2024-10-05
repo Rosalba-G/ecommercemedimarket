@@ -1,0 +1,12 @@
+{
+  "name": "ecommercemedimarket",
+  "version": "1.0.0",
+  "description": "Se creo projecto ecommerce farmacia (MedicMarket)\r Se Ajusto la estructura del proyecto, segun lineamientos e investigación.\r Se crearon las ramas de cada uno de los colaboradores\r Se creo estructura basica del HTML\r Se crearon estilos de los componentes HTML en el archivo CSS.\r Se creo logicas de funcionalidades definidas en el 1er trabajo: 1. Búsqueda básica de productos:, 2. Carrito de compras: y 4. Registro de cuentas de usuario:\r Se realizan los merge de todas las ramas\r Se crea enlace a gitpages para despliégue con la rama release.",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
