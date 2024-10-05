@@ -30,7 +30,7 @@ function Carrito(props) {
                 <th></th>
                 <th>Producto</th>
                 <th>Cantidad</th>
-                <th>Valor unitario</th>
+                <th>Valor por unidad</th>
                 <th>Valor total</th>
                 <th></th>
               </tr>
