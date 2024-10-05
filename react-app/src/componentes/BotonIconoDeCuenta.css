@@ -1,0 +1,39 @@
+.btn-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+/* Estilo general de los botones */
+.btn-registro {
+    background-color: #006064;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-registro:hover {
+    background-color: #e64a19;
+}
+
+/* Estilos para el botón del ícono de cuenta */
+.btn-gestion-datos {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-gestion-datos img {
+    width: 24px;
+    height: 24px;
+}
+
+.btn-gestion-datos:hover img {
+    opacity: 0.7;
+}
