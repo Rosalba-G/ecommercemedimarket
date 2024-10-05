@@ -121,6 +121,34 @@ useEffect(() => {
   sessionStorage.setItem('productos-carrito', JSON.stringify(productos));
 }, [productos]);
 
+const buscarProducto = (event) => {
+    
+  const valorBusqueda = event.target.value;
+  setBusqueda(valorBusqueda);
+
+
+  const filtrados = productosDisponibles.filter((producto) =>
+    producto.nombre.toLowerCase().includes(valorBusqueda.toLowerCase()) &&
+    (categoriaSeleccionada === '' || producto.categoria === categoriaSeleccionada)
+  );
+
+  setProductosFiltrados(filtrados);
+  
+};
+
+const filtrarPorCategoria = (event) => {
+
+const categoria = event.target.value;
+setCategoriaSeleccionada(categoria);
+const filtrados = productosDisponibles.filter((producto) =>
+  producto.nombre.toLowerCase().includes(busqueda.toLowerCase()) &&
+  (categoria === '' || producto.categoria === categoria)
+);
+
+setProductosFiltrados(filtrados);
+
+};
+
   return (<>
   <Encabezado mostrarCarrito={mostrarCarrito}></Encabezado>
 
@@ -131,9 +159,13 @@ useEffect(() => {
 
   <section id="productos">
       <h2>Catálogo de productos</h2>
-      <input type="text" id="buscador" placeholder="Buscar producto..." onkeyup="buscarProducto()"/>
+      <input type="text" id="buscador" placeholder="Buscar producto..." 
+      
+      value={busqueda}
+        onKeyUp={buscarProducto} 
+        onChange={(e) => setBusqueda(e.target.value)} />
       <br/>
-      <select id="categoria" onchange="filtrarPorCategoria()">
+      <select id="categoria"   value={categoriaSeleccionada} onChange={filtrarPorCategoria}>
         <option value="">Todas las categorías</option>
         <option value="Medicamentos">Medicamentos</option>
         <option value="Vitaminas y suplementos">Vitaminas y suplementos</option>
@@ -142,7 +174,8 @@ useEffect(() => {
       </select>
     </section>
 
-    <ListaDeProductos agregarProducto={agregarProducto}></ListaDeProductos> 
+  
+    <ListaDeProductos productosFiltrados={productosFiltrados} agregarProducto={agregarProducto} ></ListaDeProductos>  
   
     <Contacto></Contacto> 
 
