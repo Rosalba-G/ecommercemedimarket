@@ -15,10 +15,86 @@ import {useState, useEffect} from 'react';
 
 function App() {
   const [carritoVisible, setCarritoVisible] = useState(false);
-
+  const productosDisponibles = [
+    {
+      nombre: "Paracetamol",
+      etiquetaPrecio: "$10,000",
+      imagen: "img/Paracetamol.jpg",
+      disponible: true,
+      categoria: "Medicamentos"
+    },
+    {
+      nombre: "Acetaminofen",
+      etiquetaPrecio: "$2,500",
+      imagen: "img/Acetaminofen.jpg",
+      disponible: false,
+      categoria: "Medicamentos"
+    },
+    {
+      nombre: "Vitamina C",
+      etiquetaPrecio: "$20,000",
+      imagen: "img/vitaminaC.jpg",
+      disponible: true,
+      categoria: "Vitaminas y suplementos"
+    },
+    {
+      nombre: "Mylanta-Antiacido",
+      etiquetaPrecio: "$1,900",
+      imagen: "img/Mylanta.jpg",
+      disponible: true,
+      categoria: "Medicamentos"
+    },
+    {
+      nombre: "Bálsamo labial",
+      etiquetaPrecio: "$5,900",
+      imagen: "img/balsamo-labial.jpg",
+      disponible: true,
+      categoria: "Cuidado personal"
+    },
+    {
+      nombre: "Ensure",
+      etiquetaPrecio: "$99,200",
+      imagen: "img/Ensure.jpg",
+      disponible: true,
+      categoria: "Vitaminas y suplementos"
+    },
+    {
+      nombre: "Termómetro",
+      etiquetaPrecio: "$15,000",
+      imagen: "img/termometro.jpg",
+      disponible: true,
+      categoria: "Equipo médico"
+    },
+    {
+      nombre: "Azitromicina 500mg",
+      etiquetaPrecio: "$1,900",
+      imagen: "img/Azitromicina-MK-suspension-200mg-x15ml.jpg",
+      disponible: true,
+      categoria: "Medicamentos"
+    },
+    {
+      nombre: "Cepillo dental",
+      etiquetaPrecio: "$5,000",
+      imagen: "img/Cepillo oral B.jpg",
+      disponible: true,
+      categoria: "Cuidado personal"
+    },
+    {
+      nombre: "Tensiometro digital",
+      etiquetaPrecio: "$40,700",
+      imagen: "img/tensiometro_digital.jpg",
+      disponible: true,
+      categoria: "Equipo médico"
+    }
+  ];
   const mostrarCarrito = () => {setCarritoVisible(true)};
   const cerrarCarrito = () => {setCarritoVisible(false)};
   
+  const [busqueda, setBusqueda] = useState(''); 
+
+  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState(''); 
+  const [productosFiltrados, setProductosFiltrados] = useState(productosDisponibles);
+
   const agregarProducto = (nombre, precio, etiquetaPrecio, imagen) => {
     const productos = JSON.parse(sessionStorage.getItem('productos-carrito')) || [];
     const productoAgregado = productos.find(x => x.nombre == nombre);
