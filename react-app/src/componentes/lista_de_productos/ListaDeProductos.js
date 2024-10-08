@@ -10,6 +10,7 @@ function ListaDeProductos(props) {
           props.productosFiltrados.map((producto) => (
   
               <ProductoDetalle nombre={producto.nombre} 
+              precio={producto.precio}
               etiquetaPrecio={producto.etiquetaPrecio}
               imagen={producto.imagen}
               busqueda={props.busqueda} 
